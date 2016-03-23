@@ -1,0 +1,37 @@
+class SorterMainV2 {
+    +public static main():void
+}
+SorterMainV2<..StringComparator
+SorterMainV2<..IntegerComparator
+SorterMainV2<..Comparator 
+SorterMainV2<..WeightTurtle 
+SorterMainV2<..TurtleComparator
+
+class Sorter{
+	+Sorter()
+	+static sort(Object[] data, Comparator comp):void
+}
+Comparator <.. Sorter
+
+Interface Comparator{
+	+IntegerComparator()
+	+compare(Object o1, Object o2):int
+}
+
+class StringComparator{
+	+StringComparator()
+	+compare(Object o1, Object o2):int
+}
+Comparator <|.. StringComparator
+
+class DateComparator {
+	+DateComparator ();
+	+compare(Object o1, Object o2):int
+}
+Comparator <|.. DateComparator
+
+class TurtleComparator{
+	+TurtleComparator ()
+	+compare(Object t1, Object t2):int
+}
+Comparator <|.. TurtleComparator
