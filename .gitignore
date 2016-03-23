@@ -1,6 +1,6 @@
 classes/
 lib/
-model/*.png
+*.png
 *.jar
 *.class
 *.swp
