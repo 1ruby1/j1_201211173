@@ -1,6 +1,6 @@
 classes/
 lib/
-*.java~
+*~
 *.png
 *.jar
 *.class
