@@ -1,0 +1,8 @@
+class Component{
+    
+}
+Component <|-- ConcreateComponent0
+Component <|-- ConcreateComponent1
+Component <|-- Decorator
+Component --* Decorator
+Decorator <|-- ConcreateComponent
