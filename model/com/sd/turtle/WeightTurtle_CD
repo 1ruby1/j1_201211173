@@ -1,8 +1,0 @@
-class Turtle{
-}
-class WeightTurtle{
-    #weight:int
-    +WeightTurtle()
-    +getWeight():int
-}
-Turtle <|--WeightTurtle
