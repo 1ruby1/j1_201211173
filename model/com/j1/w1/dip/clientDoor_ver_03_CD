@@ -1,0 +1,21 @@
+cass Client{
+
+}
+abstract class Door{
+	-isOpen()
+        +abstract open()
+}
+class KnobDoor{
+	+open()
+}
+class SlidingDoor{
+	+open()
+}
+class AutomaticDoor{
+	+open()
+}
+
+Client -right- Door
+Door <|-- SlidingDoor
+Door <|-- KnobDoor
+Door <|-- AutomaticDoor

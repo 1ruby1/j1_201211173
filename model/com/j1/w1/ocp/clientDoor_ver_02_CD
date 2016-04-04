@@ -1,0 +1,21 @@
+ass Client{
+
+}
+class Door{
+	-isOpen()
+        +open()
+}
+class KnobDoor{
+	+twistOpen()
+}
+class SlidingDoor{
+	+slideOpen()
+}
+class AutomaticDoor{
+	+pressOpen()
+}
+
+Client -right- Door
+Door <|-- SlidingDoor
+Door <|-- KnobDoor
+Door <|-- AutomaticDoor

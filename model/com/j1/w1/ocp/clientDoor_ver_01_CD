@@ -1,0 +1,15 @@
+class Client{
+
+}
+class KnobDoor{
+    +twistOpen()
+}
+Client --> KnobDoor
+class SlidingDoor{
+    +slideOpen()
+}
+Client --> SlidingDoor
+class AutomaticDoor{
+    +pressOpen()
+}
+Client --> AutomaticDoor

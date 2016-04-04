@@ -1,0 +1,7 @@
+clientDoor_ver_01_CD has a proble.
+Because if there is more door type then programmer should type more about other door.
+Which mean that is really not good. When we graduate and work out there are lots of cases and type of Door(just for example...)
+
+Also in Client class there must have logic that compare of Door type.
+
+So, make Door class and make inheritance relationship between Door(super class) and AutomaticDoor,KnobDoor,SlidingDoor (sub class) .
