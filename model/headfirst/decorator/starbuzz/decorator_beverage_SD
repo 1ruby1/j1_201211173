@@ -1,0 +1,3 @@
+client -> Beverage
+Beverage -> HouseBlend:b3=new()
+client -> Soy:new(b3)
