@@ -1,0 +1,14 @@
+class Duck{
+	+swim()
+        +display()
+	+quack()
+}
+class MallardDuck{
+        +display()
+}
+class RedheadDuck{
+	+display()
+}
+
+Duck <|-- MallardDuck
+Duck <|-- RedheadDuck

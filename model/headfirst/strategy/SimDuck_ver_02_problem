@@ -1,0 +1,36 @@
+Now using interface looks like cover some problem.
+But other problem occurs.
+The interface has no java code. So programmer can't reuse code!
+
+How to solve :
+
+	1. we have to think which part of application would not change and change.
+
+	2. "Encapsulation"
+	
+	3. Encapsulation in Java is a mechanism of wrapping the 
+	   data(member data), and method(member method) together as a single unit.
+	
+	4. In encapsulation data of a class will be hidden from other classes, 
+	   and can be accessed only through the methods(getter,setter) of their 
+	   current class, therefor it is also known as data hiding.
+	
+	5. To achieve encapsulation in JAVA
+	   * Declare the variables of a class as private.
+	   * Provide public setter and getter methods to modify and view the variables valuse.
+
+
+
+Benefits of Encapsulation : 
+
+	1. The fields of a class can be made read-only or write-only.
+	2. A class can hava total control over what is stored in its fields.
+	3. The users of a class don't know how the class stores its data.
+	4. A class can change the data type of a field and users of the class do not 
+	   need to change any of their code.
+	   (if, client want other services / change th environment-like DB,other data 		type)
+	   
+
+What you should remember 
+"All the patterns are mechanism of change teal during the part of the system to other parts independently".	   
+	   

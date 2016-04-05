@@ -1,0 +1,6 @@
+There is problem in version 01.
+Because if all of subclass of Duck class can't fly. So wrong method can added to wrong class.
+
+How to solve : think about Interface!!!
+
+Why Interface : To minimize the effects when change code or method or inside of class.

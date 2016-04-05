@@ -1,0 +1,63 @@
+interface FlyBehavior{
+	+fly()
+}
+interface QuackBehavior{
+        +quack()
+}
+class FlyWithWings{
+	+fly()
+}
+class FlyNoWay{
+        +fly()
+}
+class Quack{
+	+quack()
+}
+class Squeack{
+	+quack()
+}
+class MuteQuack{
+	+quack()
+}
+class Duck{
+	-flyBehavior:FlyBehavior
+	-quackBehavior:QuackBehavior
+	+Duck()
+	+Duck(flyBehavior:FlyBehavior,quackBehavior:QuackBehavior)
+	+setFlyBehavior(flyBehavior:FlyBehavior)
+	+getFlyBehavior():FlyBehavior
+	+setQuackBehavior(quackBehavior:QuackBehavior)
+	+getQuackBehavior():QuackBehavior	    
+	+swim()
+	+display()
+	+performFly()
+	+performQuack()
+}
+class MallardDuck{									     +MallardDuck()
+        +MallardDuck(flyBehavior:FlyBehavior,quackBehavior:QuackBehavior)
+}
+class RedheadDuck{
+	+RedheadDuck()
+	+RedheadDuck(flyBehavior:FlyBehavior,quackBehavior:QuackBehavior)
+
+}
+class RubberDuck{
+	+RubberDuck()
+	+RubberDuck(flyBehavior:FlyBehavior,quackBehavior:QuackBehavior)
+
+}
+class DecoyDuck{
+        +DecoyDuck()
+        +DecoyDuck(flyBehavior:FlyBehavior,quackBehavior:QuackBehavior)
+}
+FlyBehavior <|.. FlyWithWings
+FlyBehavior <|.. FlyNoWay
+QuackBehavior <|-- Quack
+QuackBehavior <|-- Squeack
+QuackBehavior <|-- MuteQuack
+Duck <|-- MallardDuck
+Duck <|-- RedheadDuck
+Duck <|-- RubberDuck
+Duck <|-- DecoyDuck
+Duck -> FlyBehavior
+Duck -> QuackBehavior
