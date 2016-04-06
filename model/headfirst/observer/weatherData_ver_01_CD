@@ -1,18 +1,30 @@
-interface Subject{
-	+registerObserver()
-	+removeObserver()
-	+notifyObserver()
-}
 interface Observer{
-	+update()
+    +update()
 }
-class ConcreateSubject{
-	-state:String
-	+getState():String
-	+setState(state:String)
+interface Display{
+    +display()
 }
-class ConcreateObserver{    }
+class Subject{
+    +registerObserver()
+    +removeObserver()
+    +notifyObserver()
+}
 
-Subject <|.. ConcreateSubject
-Observer <|.. ConcreateObserver
-Subject -> Observer			    
+class WeatherData{
+    +getTemperature()
+    +getHumidity()
+    +getPressure()
+    +measurementsChanged()
+}
+class GeneralDisplay
+class StaticsTemperatureDisplay
+
+
+Observable -> Observer
+Observable <|-- WeatherData
+GeneralDisplay ..|> Observer
+StaticsTemperatureDisplay ..|> Observer
+GeneralDisplay ..|> Display
+StaticsTemperatureDisplay ..|> Display
+GeneralDisplay -> WeatherData
+StaticsTemperatureDisplay -> WeatherData
