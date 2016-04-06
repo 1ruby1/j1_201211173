@@ -1,1 +1,431 @@
-ss
+abstract class InputStream {
+    --New Constructor--
+    +InputStream()
+    ----
+    +availalbe():int
+    +clos()
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +{abstract}read():int
+    +read(b:byte[]):int
+    +read(b:byte[], off:int, len:int):int
+    +reset()
+    +skip(n:long):long
+    ----
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+}
+class FileInputStream{
+    --New Constructor--
+    +FileInputStream(file:File)
+    +FileInputStream(fdObj:FileDescriptor)
+    +FileInputStream(name:String)
+    ----
+    +available():int
+    +close()
+    #finalize()
+    +getChannel():FileChannel
+    +getFD():FileDescriptor
+    +read():int
+    +read(b:byte[]):int
+    +read(b:byte[],off:int,len:int):int
+    +skip(long n):long
+    --inherited methods from InputStream--
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +reset()
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class ByteArrayInputStream{
+    #buf:byte[]
+    #count:int
+    #mark:int
+    #pos:int
+    ----
+    --New Constructor--
+    +ByteArrayInputStream(buf:byte[])
+    +ByteArrayInputStream(buf:byte[],offset:int,length:int)
+    ----
+    +available():int
+    +close()
+    +read():int
+    +read(b:byte[],off:int,len:int):int
+    +skip(long n):long
+    +reset(n:long)
+    --inherited methods from InputStream--
+    +read(b:byte[]):int
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class PipedInputStream{
+    #buffer:byte[]
+    #in:int
+    #out:int
+    #{static}PIPE_SIZE:int
+    ----
+    --New Constructor--
+    +PipedInputStream()
+    +PipedInputStream(pipeSize:int)
+    +PipedInputStream(src:PipedOutputStream)
+    +PipedInputStream(src:PipedOutputStream,pipeSize:int)
+    ----
+    +available():int
+    +close()
+    +connect(:srcPipedOutputStream)
+    +read():int
+    +read(b:byte[],off:int,len:int):int
+    #receive(b:int)
+    --inherited methods from InputStream--
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +reset()
+    +read(b:byte[]):int
+    +skip(n:long):long
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class SequenceInputStream{
+    --New Constructor--
+    +SequenceInputStream(e:Enumeration<? extends InputStream>)
+    +SequenceInputStream(s1:InpustStream,sr:InpustStream)
+    ----
+    +available():int
+    +close()
+    +connect(:srcPipedOutputStream)
+    +read():int
+    +read(b:byte[],off:int,len:int):int
+    --inherited methods from InputStream--
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +reset()
+    +read(b:byte[]):int
+    +skip(n:long):long
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class FilterInputStream{
+    #in:InputStream
+    ----
+    --New Constructor--
+    +FilterInputStream(in:InpustStream)
+    ----
+    +available():int
+    +close()
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +connect(:srcPipedOutputStream)
+    +read():int
+    +read(b:byte[]):int
+    +read(b:byte[],off:int,len:int):int
+    +reset()
+    +skip(n:long):long
+    --inherited methods from InputStream--
+    
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class ObjectInputStream{
+    -{static}{final}STREAM_MAGIC:short
+    -{static}{final}STREAM_VERSION:short
+    -{static}{final}TC_BASE:byte
+    -{static}{final}TC_NULL:byte
+    -{static}{final}TC_REFERENCE:byte
+    -{static}{final}TC_CLASSDESC:byte
+    -{static}{final}TC_OBJECT:byte
+    -{static}{final}TC_STRING:byte
+    -{static}{final}TC_ARRAY:byte
+    -{static}{final}TC_CLASS:byte
+    -{static}{final}TC_BLOCKDATA:byte
+    -{static}{final}TC_ENDBLOCKDATA:byte
+    -{static}{final}TC_RESET:byte
+    -{static}{final}TC_BLOCKDATALONG:byte
+    -{static}{final}TC_EXCEPTION:byte
+    -{static}{final}TC_LONGSTRING:byte
+    -{static}{final}TC_PROXYCLASSDESC:byte
+    -{static}{final}TC_ENUM:byte
+    -{static}{final}TC_MAX:byte
+    -{static}{final}baseWireHandle:int
+    -{static}{final}SC_WRITE_METHOD:byte
+    -{static}{final}SC_BLOCK_DATA:byte
+    -{static}{final}SC_SERIALIZABLE:byte
+    -{static}{final}SC_EXTERNALIZABLE:byte
+    -{static}{final}SC_ENUM:byte
+    -{static}{final}SUBSTITUTION_PERMISSION:SerializablePermission
+    -{static}{final}SUBCLASS_IMPLEMENTATION_PERMISSION:SerializablePermission
+    -{static}{final}PROTOCOL_VERSION_1:int
+    -{static}{final}PROTOCOL_VERSION_2:int
+    ----
+    --New Constructor--
+    +ObjectInputStream()
+    +ObjectInputStream(in:InpustStream)
+    ----
+    +available():int
+    +close()
+    +defaultReadObject()
+    #enableResolveObject(enable:boolean):boolean
+    +read():int
+    +read(b:byte[],off:int,len:int):int
+    +readBooelan():boolean
+    +readByte():byte
+    +readChar():char
+    #readClassDescription():ObjectStreamClass
+    +readDouble():double
+    +readFields():ObjectInputStream.GetField
+    +readShort():short
+    #readStreamHeader()
+    +readUnshared():Object
+    +readUnsignedByte():int
+    +readUnsignedShort():short
+    readUTF():String
+    +registerValidation(obj:OnjectInputValidation,prio:int)
+    #resolveClass(desc:ObjectStreamClass):Class<?>
+    #resolveObject(obj:Object):Object
+    #resolveProxyClass(interface:String):Class<?>
+    --inherited methods from InputStream--
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +read(b:byte[]):int
+    +reset()
+    +skip(n:long)
+     --inherited methods from ObjectInput--
+    +read(b:byte[]):int
+    +reset()
+    +skip(n:long)
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class BufferedInputStream{
+    #buf:byte[]
+    #cout:int
+    #marklimit:int
+    #markpos:int
+    #pos:int
+    ----
+    #in:InputStream
+    ----
+    --New Constructor--
+    +BufferedInputStream(in:InpustStream)
+    +BufferedInputStream(in:InpustStream,size:int)
+    ----
+    +available():int
+    +close()
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +read():int
+    +read(b:byte[],off:int,len:int):int
+    +reset()
+    +skip(n:long):long
+    --inherited methods from FilterInputStream--
+    +read(b:byte[]):int
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class PushbackInputStream{
+    #buf:byte[]
+    #pos:int
+    ----
+    #in:InputStream
+    ----
+    --New Constructor--
+    +PushbackInputStream(in:InpustStream)
+    +PushbackInputStream(in:InpustStream,size:int)
+    ----
+    +available():int
+    +close()
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +read():int
+    +read(b:byte[],off:int,len:int):int
+    +reset()
+    +skip(n:long):long
+    +unread(b:byte[])
+    +unread(b:byte[],off:int,len:int)
+    +unread(b:int)
+    --inherited methods from FilterInputStream--
+    +read(b:byte[]):int
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+class DataInputStream{
+    #in:InputStream
+    ----
+    --New Constructor--
+    +DataInputStream(in:InpustStream)
+    ----
+    +read(b:byte[]):int
+    +read(b:byte[],off:int,len:int):int
+    +readBoolean():boolean
+    +readByte():byte
+    +readChar():char
+    +readDouble():double
+    +readFlout():float
+    +readFully(b:byte[])
+    +readFully(b:byte[],off:int,len:int)
+    +readInt():int
+    +reaLint():String
+    +readLong():long
+    +reaShort():short
+    +readUnsignedByte():int
+    +readUnsignedShort():int
+    +readUTF():String
+    +{static}readUTF(in:DataInput):String
+    +skipBytes(n:int):int
+    --inherited methods from FilterInputStream--
+    +available():int
+    +close()
+    +mark(readlimit:int)
+    +markSupported():boolean
+    +read():int
+    +reset()
+    +skip(n:long):long
+    --inherited methods from Object--
+    #clone():Object
+    +equals():boolean
+    +finalize()
+    +{final}getClass:Class<?>
+    +hashCode():int
+    +{final}notify()
+    +{final}notifyAll()
+    +toString():String
+    +{final}wait(timeout:long)
+    +{final}wait(timeout:long,nanos:int)
+    +{final}wait()
+    
+}
+
+InpustStream --|> Object
+InpustStream ..|> Closeable
+InpustStream ..|> AutoCloseable
+
+FileInputStream --|> InpustStream
+ByteArrayInputStream --|> InpustStream
+PipedInputStream --|> InpustStream
+SequenceInputStream --|> InpustStream
+FilterInputStream --|> InpustStream
+ObjectInputStream --|> InpustStream
+ObjectInputStream ..|> ObjectInput
+ObjectInputStream ..|> ObjectStreamConstants
+ObjectInputStream *-- ObjectInputStream.GetField
+BufferedInputStream --|> FilterInputStream
+PushbackInputStream --|> FilterInputStream
+DataInputStream --|> FilterInputStream
+DataInputStream ..|> DataInput
+
+note left of FilterInputStream 
+  add some services 
+  from basic Stream and 
+  apply some filter 
+  to in/output 
+  to serve new services.
+end note
+note left of ObjectInputStream 
+  This class can input&output the Objects in memory.
+  In Java when saving information which is stored in Object to file
+  or send information to network Object should be seperated.
+  
+  To seperate and send Object should implements Serializable interface.
+  (if didn't transient doesn't send that class member.)
+  (if class member didn't initialize by user than default mechanism applied.)
+  
+  sequence : marshalling -> Serializable -> unmarshalling
+  
+end note
