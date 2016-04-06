@@ -1,0 +1,13 @@
+ass ConcreteProduct
+class ConcreteCreator
+class Creator
+class Product
+
+Creator <|-- ConcreteCreator
+Product <|-- ConcreteProduct
+ConcreteCreator --> ConcreteProduct
+
+note left of ConcreteCreator 
+	This class call class's new allocation.
+	DIP (=Dependency Inversion Pattern)is apllied.
+end note

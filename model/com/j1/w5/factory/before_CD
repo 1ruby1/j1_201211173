@@ -1,0 +1,12 @@
+ass Client
+class MallardDuck
+class DecoyDuck
+Client -> MallardDuck:new()
+Client -> DecoyDuck:new()
+
+note right 
+	this diagram has problem
+	new() command construct concreteClass not interface.
+	what if too many concreteClass or changed?
+	Then too much things to do.....
+end note

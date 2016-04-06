@@ -1,0 +1,29 @@
+class SimplePizzaFactory{
+	+createPizza(type:String):Pizza
+}
+    class PizzaStore{
+        +orderPizza(type:String)
+	}
+	abstract class Pizza{
+	    +prepare()
+	        +topping()
+		    +bake()
+		        +cut()
+			    +box()
+			    }
+			    class CheesePizza
+			    class VeggiPizza
+			    class ClamPizza
+
+			    PizzaStore -> SimplePizzaFactory
+			    SimplePizzaFactory -> Pizza:new()
+			    CheesePizza --|> Pizza
+			    VeggiPizza --|> Pizza
+			    ClamPizza --|> Pizza
+
+			    note left of SimplePizzaFactory 
+			      This class call 
+			        class's new allocation.
+				  Return type must abstract 
+				    or interface type.(parent Class)
+				    end note
