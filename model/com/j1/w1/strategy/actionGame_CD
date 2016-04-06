@@ -1,0 +1,52 @@
+interface WeaponBehavior{
+	+useWeapon()
+}
+class KnifeBehavior{
+        +useWeapon()
+}
+class BowAndArrowBehavior{
+	+useWeapon()
+}
+class AxeBehavior{
+        +useWeapon()
+}
+class SwordBehavior{
+	+useWeapon()
+}
+Abstract class Character{
+	-wb:WeaponBehavior
+	+Character()
+	+Character(wb:WeaponBehavior)
+	+setWeaponBehavior(wb:WeaponBehavior)
+	+getWeaponBehavior():WeaponBehavior
+	+abstract fight()
+}
+class Queen{
+	+Queen()
+	+Queen(wb:WeaponBehavior)
+	+fight()
+}
+class King{
+	+King()
+	+King(wb:WeaponBehavior)
+	+fight()
+}
+class Troll{
+        +Troll()
+	+Troll(wb:WeaponBehavior)
+	+fight()
+}
+class Knight{
+	+Knight()
+	+Knight(wb:WeaponBehavior)
+	+fight()
+}
+WeaponBehavior <|.. KnifeBehavior
+WeaponBehavior <|.. BowAndArrowBehavior
+WeaponBehavior <|.. AxeBehavior
+WeaponBehavior <|.. SwordBehavior
+Character -> WeaponBehavior
+Character <|-- Queen
+Character <|-- king
+Character <|-- Troll
+Character <|-- Knight

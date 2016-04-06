@@ -1,0 +1,18 @@
+interface Subject{
+	+registerObserver()
+	+removeObserver()
+	+notifyObserver()
+}
+interface Observer{
+	+update()
+}
+class ConcreateSubject{
+	-state:String
+	+getState():String
+	+setState(state:String)
+}
+class ConcreateObserver{    }
+
+Subject <|.. ConcreateSubject
+Observer <|.. ConcreateObserver
+Subject -> Observer			    
