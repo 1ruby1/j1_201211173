@@ -1,1 +1,30 @@
-qq
+interface java.util.Observer{
+    +update()
+}
+interface Display{
+    +display()
+}
+class java.util.Observable{
+    +addObserver()
+    +deleteObserver()
+    notifyObserver()
+    +setChanged()
+}
+
+class WeatherData{
+    +getTemperature()
+    +getHumidity()
+    +getPressure()
+}
+class GeneralDisplay
+class StaticsTemperatureDisplay
+
+
+java.util.Observable -> java.util.Observer
+java.util.Observable <|-- WeatherData
+GeneralDisplay ..|> java.util.Observer
+StaticsTemperatureDisplay ..|> java.util.Observer
+GeneralDisplay ..|> Display
+StaticsTemperatureDisplay ..|> Display
+GeneralDisplay -> WeatherData
+StaticsTemperatureDisplay -> WeatherData
