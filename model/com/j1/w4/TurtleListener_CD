@@ -1,0 +1,12 @@
+class TurtleKeyListener
+class TurtleMouseListener
+
+TurtleKeyListener --|> Turtle
+TurtleKeyListener ..> KeyAdapter
+TurtleKeyListener --* keyPressed
+
+TurtleMouseListener --|> Turtle
+TurtleMouseListener ..> MouseAdapter
+TurtleMouseListener ..> MouseMotionAdapter
+TurtleMouseListener --* mousePressed
+TurtleMouseListener --* mouseDragged

@@ -1,0 +1,21 @@
+Interface java.util.Observer{
+    +update(Observable o, Object arg):void
+    
+}
+class java.util.Observable{
+    +addObserver(Observer o):void
+    +notifyObservers():void
+    +hasChanged():boolean
+    #setChanged():void
+}
+java.util.Observable--right|> java.util.Observer
+java.util.Observable<|.. java.util.Observer
+class MomTurtle{
+    
+}
+class BabyTurtle{
+
+}
+
+java.util.Observable <|-- BabyTurtle
+java.util.Observer <|.. MomTurtle
