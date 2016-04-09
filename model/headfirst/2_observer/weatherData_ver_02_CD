@@ -7,7 +7,7 @@ interface Display{
 class java.util.Observable{
     +addObserver()
     +deleteObserver()
-    notifyObserver()
+    +notifyObserver()
     +setChanged()
 }
 
