@@ -1,7 +1,7 @@
 interface java.util.Observer{
     +update()
 }
-interface Display{
+interface DisplayElement{
     +display()
 }
 class java.util.Observable{
@@ -16,15 +16,15 @@ class WeatherData{
     +getHumidity()
     +getPressure()
 }
-class GeneralDisplay
+class CurrentConditionsDisplay
 class StaticsTemperatureDisplay
 
 
 java.util.Observable -> java.util.Observer
 java.util.Observable <|-- WeatherData
-GeneralDisplay ..|> java.util.Observer
+CurrentConditionsDisplay ..|> java.util.Observer
 StaticsTemperatureDisplay ..|> java.util.Observer
-GeneralDisplay ..|> Display
-StaticsTemperatureDisplay ..|> Display
-GeneralDisplay -> WeatherData
+CurrentConditionsDisplay ..|> DisplayElement
+StaticsTemperatureDisplay ..|> DisplayElement
+CurrentConditionsDisplay -> WeatherData
 StaticsTemperatureDisplay -> WeatherData
