@@ -1,0 +1,32 @@
+abstract class Reader{
+	+{abstract}close()
+	+{abstract}read(cbuf:char[],off:int,len:int)
+}
+
+class CharArrayReader
+class InputStreamReader
+class PipedReader
+class StringReader
+abstract class FilterReader{
+	+{protected}FilterReader()
+}
+class BufferedReader
+
+Reader <|-- BufferedReader
+Reader <|-- CharArrayReader
+Reader <|-- InputStreamReader
+Reader <|-- PipedReader
+Reader <|-- StringReader
+Reader <|-- FilterReader
+
+BufferedReader o-- Reader
+class LineNumberReader
+BufferedReader <|-- LineNumberReader
+
+FilterReader o-- Reader
+class PushbackReader
+FilterReader <|-- PushbackReader
+
+class FileReader
+InputStreamReader *-- InputStream
+InputStreamReader <|-- FileReader

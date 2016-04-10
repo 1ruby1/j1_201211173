@@ -1,0 +1,37 @@
+abstract class Beverage{
+	-description:String
+	+getDescription():String
+	+{abstract}cost():double	
+}
+
+class HouseBlend
+class DarkRost
+class Espresso
+class Decaf
+
+abstract class CondimentDecorator{
+	+{abstract}getDescription():String
+}
+
+class Milk
+class Mocha
+class Soy
+class Whip
+
+
+Beverage <|-- HouseBlend
+Beverage <|-- DarkRost
+Beverage <|-- Espresso
+Beverage <|-- Decaf
+
+Beverage <|-- CondimentDecorator
+
+CondimentDecorator <|-- Milk
+CondimentDecorator <|-- Mocha
+CondimentDecorator <|-- Soy
+CondimentDecorator <|-- Whip
+
+Beverage --o Milk
+Beverage --o Mocha
+Beverage --o Soy
+Beverage --o Whip

@@ -1,0 +1,38 @@
+abstract class OutputStream{
+	+{abstract}write(b:int)
+}
+
+class ByteArrayOutputStream
+class FileOutputStream
+class FileInputStream
+class ObjectOutputStream
+class PipedOutputStream
+class FilterOutputStream
+
+OutputStream <|-- ByteArrayOutputStream
+OutputStream <|-- FileOutputStream
+OutputStream <|-- FileInputStream
+OutputStream <|-- ObjectOutputStream
+OutputStream <|-- PipedOutputStream
+OutputStream <|-- FilterOutputStream
+
+FilterOutputStream o-- OutputStream
+
+class BufferedOutputStream
+class CheckedOutputStream
+class CipherOutputStream
+class DataOutputStream
+class DeflaterOutputStream
+class DigestOutputStream
+class InflaterOutputStream
+class PrintStream
+
+
+FilterOutputStream <|-- BufferedOutputStream
+FilterOutputStream <|-- CheckedOutputStream
+FilterOutputStream <|-- CipherOutputStream
+FilterOutputStream <|-- DataOutputStream
+FilterOutputStream <|-- DeflaterOutputStream
+FilterOutputStream <|-- DigestOutputStream
+FilterOutputStream <|-- InflaterOutputStream
+FilterOutputStream <|-- PrintStream

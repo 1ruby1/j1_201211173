@@ -1,0 +1,15 @@
+abstract Beverage{
+	-private:String
+	+getDescription():String
+	+{abstract}cost()
+}
+
+class HouseBlend
+class DarkRoast
+class Decaf
+class Espresso
+
+Beverage <|-- HouseBlend
+Beverage <|-- DarkRoast
+Beverage <|-- Decaf
+Beverage <|-- Espresso

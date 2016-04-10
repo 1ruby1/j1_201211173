@@ -1,0 +1,46 @@
+abstract class InputStream{
+	+{abstract}read()
+}
+
+class AudioInputStream
+class ByteArrayInputStream
+class FileInputStream
+class ObjectInputStream
+class PipedInputStream
+class SequenceInputStream
+class StringBufferInputStream
+class FilterInputStream
+
+InputStream <|-- AudioInputStream
+InputStream <|-- ByteArrayInputStream
+InputStream <|-- FileInputStream
+InputStream <|-- ObjectInputStream
+InputStream <|-- PipedInputStream
+InputStream <|-- SequenceInputStream
+InputStream <|-- StringBufferInputStream
+InputStream <|-- FilterInputStream
+
+FilterInputStream o-- InputStream
+
+class BufferedInputStream
+class CheckedInputStream
+class CipherInputStream
+class DataInputStream
+class DeflaterInputStream
+class DigestInputStream
+class InflaterInputStream
+class LineNumberInputStream
+class ProgressMonitorInputStream
+class PushbackInputStream
+
+
+FilterInputStream <|-- BufferedInputStream
+FilterInputStream <|-- CheckedInputStream
+FilterInputStream <|-- CipherInputStream
+FilterInputStream <|-- DataInputStream
+FilterInputStream <|-- DeflaterInputStream
+FilterInputStream <|-- DigestInputStream
+FilterInputStream <|-- InflaterInputStream
+FilterInputStream <|-- LineNumberInputStream
+FilterInputStream <|-- ProgressMonitorInputStream
+FilterInputStream <|-- PushbackInputStream

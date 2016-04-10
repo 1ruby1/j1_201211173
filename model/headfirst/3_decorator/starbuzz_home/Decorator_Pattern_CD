@@ -1,0 +1,21 @@
+class Component{
+	+methodA()
+	+methodB()
+}
+class ConcreteComponent
+class Decorator
+
+class ConcreteDecoratorA{
+	-WrappedObj:Component
+}
+class ConcreteDecoratorB{
+	-WrappedObj:Component
+	-newState:Object
+}
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+
+Decorator <|-- ConcreteDecoratorA
+Component --o ConcreteDecoratorA
+Decorator <|-- ConcreteDecoratorB
+Component --o ConcreteDecoratorB
