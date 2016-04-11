@@ -1,0 +1,22 @@
+abstract class Pizza{
+	+prepare()
+	+bake()
+	+cut()
+	+box()
+}
+class PizzaStore{
+	+orderPizza(type:String):Pizza
+}
+
+class CheesePizza
+class GreekPizza
+class PepperoniPizza
+
+Pizza <|-- CheesePizza
+Pizza <|-- GreekPizza
+Pizza <|-- PepperoniPizza
+
+PizzaStore --> Pizza
+PizzaStore --> CheesePizza
+PizzaStore --> GreekPizza
+PizzaStore --> PepperoniPizza

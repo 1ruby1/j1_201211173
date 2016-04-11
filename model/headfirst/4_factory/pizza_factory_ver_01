@@ -1,0 +1,7 @@
+There is only cheesePizza, greekPizza, pepperoniPizza now.
+What if we have to add new menu there??
+Then programmer must change body of orderPizza method....
+It against to OCP.
+Also now we know where can be changed.
+So we have to seperate that part from the orderPizza method body.
+This process name is "encapsulation".
