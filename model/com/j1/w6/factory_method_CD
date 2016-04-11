@@ -1,0 +1,34 @@
+PizzaStore <|-- NYPizzaStore
+PizzaStore <|-- ChicagoPizzaStore
+Pizza <|-- "ChicagoStyle\nPizza"
+Pizza <|-- "NYStyleCheese\nPizza"
+"ChicagoStyle\nPizza" <|-- "ChicagoStyle\nCheesePizza"
+"ChicagoStyle\nPizza" <|-- "ChicagoStyle\nPepperoniPizza"
+"ChicagoStyle\nPizza" <|-- "ChicagoStyle\nClamPizza"
+"ChicagoStyle\nPizza" <|-- "ChicagoStyle\nVeggiePizza"
+
+abstract class PizzaStore {
+  +orderPizza(String):Pizza
+  {abstract}-createPizza(String):Pizza
+}
+note left of PizzaStore
+"""public Pizza orderPizza(String type) {
+    Pizza pizza;
+    pizza=createPizza(type);
+    pizza.prepare();
+    pizza.bake();
+    pizza.cut();
+    pizza.box();
+    return pizza;
+}"""
+end note
+note left of ChicagoPizzaStore
+"""<b>factory method</b>
+Pizza createPizza(String type) {
+    Pizza pizza=null;
+    if(type.equals("cheese"))
+        pizza=new ChicagoStyleCheesePizza();
+    .....
+    return pizza
+}"""
+end note
