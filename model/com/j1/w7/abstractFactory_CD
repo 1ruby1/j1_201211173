@@ -1,0 +1,60 @@
+class PizzaIngredientFactory
+
+class Chicago\nPizza\nIngredientFactory
+class NY\nPizza\nIngredientFactory
+
+PizzaIngredientFactory <|-- Chicago\nPizza\nIngredientFactory
+PizzaIngredientFactory <|-- NY\nPizza\nIngredientFactory
+
+interface Dough
+
+class ThickCrustDough
+class ThinCrustDough
+
+Dough <|.. ThickCrustDough
+Dough <|.. ThinCrustDough
+
+interface Cheese
+
+class MozzarellaCheese
+class ReggianoCheese
+
+Cheese <|.. MozzarellaCheese
+Cheese <|.. ReggianoCheese
+
+
+Chicago\nPizza\nIngredientFactory ..> Dough
+Chicago\nPizza\nIngredientFactory ..> Cheese
+
+NY\nPizza\nIngredientFactory ..> Dough
+NY\nPizza\nIngredientFactory ..> Cheese
+
+
+abstract class Pizza{
+    +dough:Dough
+    +cheese:Cheese
+    +{abstract}prepare()
+    +cute()
+    +box()
+}
+
+class CheesePizza{
+    +factory:PizzaIngredientFactory
+    CheesePizza(factory:PizzaIngredientFactory)
+}
+
+Pizza <|-- CheesePizza
+
+
+abstract class PizzaStore{
+    #{abstract}createPizza(item:String):Pizza
+    +orderPizza(type:String):Pizza
+}
+
+class ChicagoPizzaStore
+
+PizzaStore <|-- ChicagoPizzaStore
+ChicagoPizzaStore --> PizzaIngredientFactory
+CheesePizza --> PizzaIngredientFactory
+
+

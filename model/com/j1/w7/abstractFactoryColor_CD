@@ -1,0 +1,26 @@
+abstract class DrawingAbstractFactory{
+    +{abstract}getColor(color:String):Color
+    +{abstract}getShape(shape:String):Shape
+}
+
+class ColorFactory
+class ShapeFactory
+
+DrawingAbstractFactory <|-- ColorFactory
+DrawingAbstractFactory <|-- ShapeFactory
+
+interface Color{
+    +show()
+}
+
+Color <|.. Green
+Color <|.. Violet
+
+interface Shape{
+    +show()
+}
+Shape <|.. Rectangle
+Shape <|.. Square
+
+ColorFactory --> Color
+ShapeFactory --> Shape

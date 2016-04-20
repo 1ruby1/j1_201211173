@@ -1,0 +1,10 @@
+class Client
+Client --> Barista1:order()
+Client --> Barista2:order()
+Client --> Barista3:order()
+
+note as N1
+  This diagram means 
+  3 coffees are made.
+  We just need 1 coffee.
+end note

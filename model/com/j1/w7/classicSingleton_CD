@@ -1,0 +1,12 @@
+class Singleton{
+    -{static}instance:Singleton
+    -Singleton()
+    +{static}getInstance():Singleton 
+    
+}
+
+note as N1
+  Thread problem.
+  In the Constructor.
+  when new...
+end note
