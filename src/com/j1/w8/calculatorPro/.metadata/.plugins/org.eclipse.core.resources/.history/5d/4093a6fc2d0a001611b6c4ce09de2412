@@ -1,5 +1,0 @@
-package myCal;
-
-public class MyCalculatorTree extends MyCalculator{
-
-}

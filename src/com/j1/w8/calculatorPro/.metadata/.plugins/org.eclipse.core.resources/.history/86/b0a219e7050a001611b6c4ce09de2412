@@ -1,7 +1,0 @@
-package UI;
-
-import java.awt.event.ActionListener;
-
-public class ButtonPadListener implements ActionListener{
-
-}

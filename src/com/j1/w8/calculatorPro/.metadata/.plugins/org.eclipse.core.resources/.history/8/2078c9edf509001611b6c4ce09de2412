@@ -1,9 +1,0 @@
-package UI;
-
-import javax.swing.JPanel;
-
-public class TextPad extends JPanel{
-
-	private 
-	
-}
