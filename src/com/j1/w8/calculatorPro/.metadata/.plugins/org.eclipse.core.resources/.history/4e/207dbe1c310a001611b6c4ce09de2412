@@ -1,0 +1,14 @@
+package myCal;
+
+import java.util.ArrayList;
+
+public class MyCalculatorTree extends MyCalculator{
+
+	private MyCalculator fullStr;
+	private 
+	
+	public void initChildsMyCalTree(){
+		
+	}
+	
+}

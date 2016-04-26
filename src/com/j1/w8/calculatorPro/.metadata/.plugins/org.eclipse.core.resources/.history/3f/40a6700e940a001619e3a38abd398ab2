@@ -1,0 +1,38 @@
+package myCal;
+
+import java.util.ArrayList;
+
+public class MyCalculatorTree extends MyCalculator{
+
+	private ArrayList<int[][]> bracketList; 
+	
+	public MyCalculatorTree(ArrayList<int[][]> bracketList,String fullStr){
+		super(fullStr);
+		this.bracketList = bracketList;
+	}
+	private MyCalculatorTree(String str) {
+		super(str);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void calculateBracket(){
+		
+		int i=this.bracketList.size()-1;
+		String s,tmpS;
+		int [][] bracketSet= new int[1][2]; 
+		double tmpRes;
+		
+		
+		for(;i>=0;i--){
+			bracketSet = this.bracketList.get(i);
+			MyCalculator tmpCal = new MyCalculator(super.getStr().substring(bracketSet[0][0]+1, bracketSet[0][1]));
+			tmpCal.calculate();
+			
+			s = super.getStr().substring(i-1, i);
+			tmpS=Double.toString(tmpCal.getResult()); 
+			for(k=0;k<this.bracketList.size();k++){
+				
+			}
+		}
+	}
+}

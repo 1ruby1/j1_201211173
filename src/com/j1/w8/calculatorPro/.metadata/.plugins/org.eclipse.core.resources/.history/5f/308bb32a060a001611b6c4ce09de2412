@@ -1,0 +1,20 @@
+package UI;
+
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ButtonPadListener implements ActionListener{
+
+	private TextArea textA;
+	private TextArea resulA;
+	
+	public public ButtonPadListener() {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

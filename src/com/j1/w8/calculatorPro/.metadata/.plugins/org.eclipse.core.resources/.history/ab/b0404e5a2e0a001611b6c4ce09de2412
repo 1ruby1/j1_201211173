@@ -1,0 +1,10 @@
+package validator;
+
+public class ValidateCalculatorStr {
+	
+	private String str;
+	private String resultStr;
+	
+	
+
+}

@@ -1,0 +1,41 @@
+package UI;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class CalculatorUI extends JFrame{
+
+	private Container jframeContainer;
+	private JPanel keypad;
+	private JPanel textPad;
+	private ActionListener btnListener;
+	
+	public CalculatorUI(){
+		//set layout style
+		this.jframeContainer = this.getContentPane();
+		this.jframeContainer.setLayout(new GridLayout(1,2));
+		
+		//initialize keypad and textpad
+		this.initTextPad();
+		this.initKeyPad();
+		
+		this.jframeContainer.add(keypad);
+		this.jframeContainer.add(textPad);
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.pack();
+		this.setVisible(true);
+	}
+	
+	private void initKeyPad(){
+		this.keypad=new ButtonPad();
+	}
+	private void initTextPad(){
+		this.textPad = new TextPad();
+	}
+}

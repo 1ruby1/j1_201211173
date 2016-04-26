@@ -1,0 +1,17 @@
+package myCal;
+
+import java.util.ArrayList;
+
+public class MyCalculatorTree extends MyCalculator{
+
+	private MyCalculator fullStr;
+	private ArrayList<int[][]> bracketList; 
+	
+	private int num1;
+	private int num2;
+	
+	public void initChildsMyCalTree(){
+		
+	}
+	
+}

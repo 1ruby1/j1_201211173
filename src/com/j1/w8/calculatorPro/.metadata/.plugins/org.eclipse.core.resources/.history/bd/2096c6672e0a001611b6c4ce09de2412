@@ -1,0 +1,23 @@
+package validator;
+
+public class ValidateCalculatorStr {
+	
+	private String str;
+	private String resultStr;
+	
+	public ValidateCalculatorStr() {
+		this.str = null;
+		this.resultStr = new String();
+	}
+	public ValidateCalculatorStr(String str) {
+		this.str = str;
+		this.resultStr = new String();
+	}
+	public ValidateCalculatorStr(String str, String resultStr) {
+		this.str = str;
+		this.resultStr = resultStr;
+	}
+	
+	
+
+}
