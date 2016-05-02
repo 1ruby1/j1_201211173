@@ -1,0 +1,5 @@
+Client -> SimpleRemoteControl:remote=new()
+Client -> Light:light=new()
+Client -> LightOnCommand:lightOn=new(light)
+Client -> SimpleRemoteControl:setCommand(lightOn)
+Client -> SimpleRemoteControl:buttonPressed()

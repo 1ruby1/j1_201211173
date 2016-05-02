@@ -1,0 +1,39 @@
+class Light{
+    +on()
+    +off()
+}
+class GarageDoor{
+    +up()
+    +down()
+}
+
+Interface Command{
+    +execute()
+}
+class LightOnCommand{
+    -light:Light
+    +LightOnCommane(light:Light)
+    +execute()
+}
+class GarageDoorUpCommand{
+    -garageDoor:GarageDoor
+    +GarageDoorUpCommand(garageDoor:GarageDoor)
+    +execute()
+}
+
+Command <|.. LightOnCommand
+Command <|.. GarageDoorUpCommand
+
+LightOnCommand --> Light
+GarageDoorUpCommand --> GarageDoor
+
+
+class SimpleRemoteControl{
+    -slotList:List<Command>
+    +setCommand(command:Command)
+    +buttonPressed()
+}
+SimpleRemoteControl -->Command
+class Client
+Client -> SimpleRemoteControl():setCommand(Command)
+Client -> SimpleRemoteControl():buttonPressed()
