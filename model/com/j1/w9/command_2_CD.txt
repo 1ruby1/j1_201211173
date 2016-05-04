@@ -1,0 +1,41 @@
+Interface Command{
+    +execute()
+    +undo()
+}
+class LightOnCommand{
+    -light:Light
+    +LightOnCommand(light:Light)
+    +execute()
+    +undo()
+}
+Command <|.. LightOnCommand
+
+class Light{
+    -level:int
+    -location:String
+    +Light(location:String)
+    +on()
+    +off()
+    +dim(int:level)
+    +getLevel():int
+}
+LightOnCommand -left-> Light
+
+class SimpleRemoteControl{
+    -onCommands:Command[]
+    -offCommands:Command[]
+    -undoCommand:Command
+    +setOnCommand(command:Command):boolean
+    +setOnCommand(slot:int,command:Command):boolean
+    +setOffCommand(command:Command):boolean
+    +setOffCommand(slot:int,command:Command):boolean
+    +onButtonWasPushed(slot:int)
+    +offButtonWasPushed(slot:int)
+    +undoButtonWasPushed()
+}
+SimpleRemoteControl -left-o Command
+
+class NoCommand 
+Command <|.. NoCommand
+
+
