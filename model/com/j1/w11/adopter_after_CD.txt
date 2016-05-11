@@ -1,0 +1,21 @@
+package "com.j1.w11"{
+
+class c1
+class c2
+class c3
+class c4
+class c5
+class c6
+c1 --> c2
+c1 --> c6
+c2 --> c5
+c1 -down-> c3
+c3 --> c4
+}
+class Client
+class Facade
+
+Client -right-> Facade
+Facade --> c1
+Facade --> c2
+Facade --> c6

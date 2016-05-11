@@ -1,0 +1,23 @@
+package "com.j1.w11"{
+
+class c1
+class c2
+class c3
+class c4
+class c5
+class c6
+c1 --> c2
+c1 --> c6
+c2 --> c5
+c1 -down-> c3
+c3 --> c4
+}
+class Client
+note left
+ Client class has problem because
+ Client have to know all class...(c1..c6)
+end note
+Client --> c1
+Client --> c2
+Client --> c6
+
