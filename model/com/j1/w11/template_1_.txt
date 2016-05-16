@@ -1,0 +1,18 @@
+title "before"
+
+class Coffee{
+    +prepareRecipe()
+    +boilWater()
+    +pourInCup()
+    +brewCoffeeGrinds()
+    +addSugarAndMilk()
+}
+class Tea{
+    +prepareRecipe()
+    +boilWater()
+    +pourInCup()
+    +steepTeaBag()
+    +addLemon()
+}
+class -right-> Coffee
+class -down-> Tea

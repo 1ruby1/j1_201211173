@@ -1,0 +1,9 @@
+abstract class AbstractClass{
+    +templateMethod()
+    +{abstarct}primitiveOperation1()
+    +{final} concreateOperation()
+    +hook()
+}
+class ConcreteClass
+
+AbstractClass <|-- ConcreteClass

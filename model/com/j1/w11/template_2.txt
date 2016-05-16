@@ -1,0 +1,20 @@
+abstract class CaffeInBeverage{
+    +{final}prepareRecipe()
+    +{abstract}brew()
+    +{abstract}addCondiments()
+    +boilWater()
+    +PourInCup()
+}
+
+class Coffee{
+    +brew()
+    +addCondiments()
+}
+
+class Tea{
+    +brew()
+    +addCondiments()
+}
+
+CaffeInBeverage <|-- Coffee
+CaffeInBeverage <|-- Tea
