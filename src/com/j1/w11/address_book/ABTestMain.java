@@ -1,29 +1,26 @@
-import infoIO.ReadInfo;
-import infoIO.WriteInfo;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import address_book.ABGroupInfo;
-import address_book.ABGroupInfoList;
+import address_book.ABGroupInfoDAO;
+import address_book.ABGroupInfoDAOImpl;
 import address_book.ABMemberInfo;
-import address_book.ABMemberInfoList;
+import address_book.ABMemberInfoDAO;
+import address_book.ABMemberInfoDAOImpl;
 
 
 public class ABTestMain {
 	
-	private ABMemberInfoList memInfoList;
-	private ABGroupInfoList groupInfoList;
+	private ABMemberInfoDAO memInfoList;
+	private ABGroupInfoDAO groupInfoList;
 	
+	public ABTestMain(){
+		this.groupInfoList = new ABGroupInfoDAOImpl();
+		((ABGroupInfoDAOImpl)this.groupInfoList).getConnection();
+	}
 	public static void main(String[] args){
 		ABTestMain main_ = new ABTestMain();
 		int menuNum;
-		
-		ReadInfo read = new ReadInfo();
-		main_.memInfoList = read.readMemberInfo();
-		main_.groupInfoList = read.readGroupInfo();
 		
 		while(true){
 			menuNum = main_.printMenu();
@@ -32,16 +29,19 @@ public class ABTestMain {
 			else if(menuNum==2)main_.process2();
 			else if(menuNum==3)main_.process3();
 			else if(menuNum==4)main_.process4();
+			else if(menuNum==5)main_.process5();
+			else if(menuNum==6)main_.process6();
+			else if(menuNum==7)main_.process7();
+			else if(menuNum==8)main_.process8();
 		}
 		
-		WriteInfo write = new WriteInfo();
-		write.writeMemInfo(main_.memInfoList);
-		write.writeGroupInfo(main_.groupInfoList);
+		((ABGroupInfoDAOImpl)main_.groupInfoList).disConnection();
+		((ABMemberInfoDAOImpl)main_.memInfoList).disConnection();
 	}
 	
 	public int printMenu(){
 		Scanner sc;
-		System.out.println("Choose menu number : \n1.insert Member Information \n2.search Member Information \n3.insert Group Information \n4.search Group Information \n5.Quit \n=> ");
+		System.out.println("Choose menu number : \n1.insert Member Information \n2.search Member Information \n4.update Member Infromation \n5.delete Member Information \n3.insert Group Information \n4.search Group Information \n5.Quit \n=> ");
 		sc=new Scanner(System.in);
 		return sc.nextInt();
 	}
@@ -53,23 +53,23 @@ public class ABTestMain {
 		name = sc.next();
 		System.out.println("Member Phone Number : ");
 		phone = sc.next();
-		if(this.memInfoList.searchMemberPHNum(phone)==null){
+		if(((ABMemberInfoDAOImpl)this.memInfoList).searchMemberPHNum(phone)!=null){
 			System.out.println("phone number ("+phone+") is already inserted!!!");
 			return;
 		}
 		System.out.println("Group Name : ");
 		group = sc.next();
-		code=this.memInfoList.makeMemberCode();
+		code=((ABMemberInfoDAOImpl)this.memInfoList).makeMemberCode();
 		if(group==null){
 			this.memInfoList.insertMemberInfo(new ABMemberInfo(code, name, phone));
 		}else{
 			if(this.groupInfoList.searchGroupName(group)==null){
-				gCode = this.groupInfoList.makeGroupCode();
-				this.groupInfoList.insertGroupInfo(gCode, group);
+				gCode = ((ABGroupInfoDAOImpl)this.groupInfoList).makeGroupCode();
+				((ABGroupInfoDAOImpl)this.groupInfoList).insertGroupInfo(gCode, group);
 			}else {
 				gCode = (this.groupInfoList.searchGroupName(group)).getAbGroupCode();
 			}
-			this.groupInfoList.makeGroupCode();
+			((ABGroupInfoDAOImpl)this.groupInfoList).makeGroupCode();
 			this.memInfoList.insertMemberInfo(new ABMemberInfo(code, name, phone,gCode));
 		}
 	}
@@ -78,7 +78,8 @@ public class ABTestMain {
 		//search member
 		int num;
 		String name,code,phone,group,gCode;
-		ABMemberInfoList resList = new ABMemberInfoList();
+		ABMemberInfoDAOImpl resList = new ABMemberInfoDAOImpl();
+		ABMemberInfo res = null;
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.println("search\n1.name\n2.phone number\n3.group name\n=>");
@@ -90,12 +91,13 @@ public class ABTestMain {
 		}else if(num==2){
 			System.out.println("member phone number => ");
 			phone=sc.next();
-			resList.insertMemberInfo(this.memInfoList.searchMemberPHNum(phone));				
+			res = ((ABMemberInfoDAOImpl)this.memInfoList).searchMemberPHNum(phone);
+			if(res!=null)resList.insertMemberInfo(res);				
 		}else if(num==3){
 			System.out.println("group name => ");
 			group=sc.next();
 			gCode = this.groupInfoList.searchGroupName(group).getAbGroupCode();
-			resList=this.memInfoList.searchMemberGCode(gCode);
+			resList=((ABMemberInfoDAOImpl)this.memInfoList).searchMemberGCode(gCode);
 		}
 		if(!resList.getAbMemberInfoList().isEmpty()){
 			for(ABMemberInfo mem : resList.getAbMemberInfoList()){
@@ -105,31 +107,134 @@ public class ABTestMain {
 		}
 	}
 	public void process3(){
+		//search member
+		int num;
+		String name,code,phone,group,gCode;
+		ABMemberInfoDAOImpl resList = new ABMemberInfoDAOImpl();
+		ABMemberInfo res = null;
+		StringTokenizer token;
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("search\n1.name\n2.phone number\n=>");
+		num = Integer.parseInt(sc.next());
+		if(num==1){
+			System.out.println("member name => ");
+			name=sc.next();
+			resList=this.memInfoList.searchMemberName(name);
+			if(!resList.getAbMemberInfoList().isEmpty()){
+				for(ABMemberInfo mem : resList.getAbMemberInfoList()){
+					token = new StringTokenizer(mem.getAbMemberCode(), "_");
+					System.out.println("number : "+token.nextToken()+"\n phone number : "+mem.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(mem.getAbGroupCode()).getAbGroupName());
+					System.out.println("==============================================================");
+				}
+				System.out.println("choose number => ");
+				num = Integer.parseInt(sc.next());
+				res = this.memInfoList.searchMemberCode("member_"+num);
+				if(res!=null){
+					System.out.println("name : "+res.getAbMemberName()+"\n phone number : "+res.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(res.getAbGroupCode()).getAbGroupName());
+					System.out.println("write member info (name phoneNumber (group)) : ");
+					name=sc.next();
+					phone=sc.next();
+					group=sc.next();
+					if(group==null)gCode = "group_0";
+					else gCode = this.groupInfoList.searchGroupName(group).getAbGroupCode();
+					this.memInfoList.updateMemberInfo(res, name, phone, gCode);
+				}
+			}
+		}else if(num==2){
+			System.out.println("member phone number => ");
+			phone=sc.next();
+			res = ((ABMemberInfoDAOImpl)this.memInfoList).searchMemberPHNum(phone);
+			if(res!=null){
+				System.out.println("name : "+res.getAbMemberName()+"\n phone number : "+res.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(res.getAbGroupCode()).getAbGroupName()+" is deleted!");
+				System.out.println("write member info (name phoneNumber (group)) : ");
+				name=sc.next();
+				phone=sc.next();
+				group=sc.next();
+				if(group==null)gCode = "group_0";
+				else gCode = this.groupInfoList.searchGroupName(group).getAbGroupCode();
+				this.memInfoList.updateMemberInfo(res, name, phone, gCode);
+			}		
+		}
+	}
+	public void process4(){
+		int num;
+		String name,code,phone,group,gCode;
+		ABMemberInfoDAOImpl resList = new ABMemberInfoDAOImpl();
+		ABMemberInfo res = null;
+		StringTokenizer token;
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("search\n1.name\n2.phone number\n3.group name\n=>");
+		num = Integer.parseInt(sc.next());
+		if(num==1){
+			System.out.println("member name => ");
+			name=sc.next();
+			resList=this.memInfoList.searchMemberName(name);
+			if(!resList.getAbMemberInfoList().isEmpty()){
+				for(ABMemberInfo mem : resList.getAbMemberInfoList()){
+					token = new StringTokenizer(mem.getAbMemberCode(), "_");
+					System.out.println("number : "+token.nextToken()+"\n phone number : "+mem.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(mem.getAbGroupCode()).getAbGroupName());
+					System.out.println("==============================================================");
+				}
+				System.out.println("choose number => ");
+				num = Integer.parseInt(sc.next());
+				res = this.memInfoList.searchMemberCode("member_"+num);
+				if(res!=null){
+					System.out.println("name : "+res.getAbMemberName()+"\n phone number : "+res.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(res.getAbGroupCode()).getAbGroupName()+" is deleted!");
+					this.memInfoList.deleteMemberInfo(res);
+				}
+			}
+		}else if(num==2){
+			System.out.println("member phone number => ");
+			phone=sc.next();
+			res = ((ABMemberInfoDAOImpl)this.memInfoList).searchMemberPHNum(phone);
+			if(res!=null){
+				System.out.println("name : "+res.getAbMemberName()+"\n phone number : "+res.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(res.getAbGroupCode()).getAbGroupName()+" is deleted!");
+				this.memInfoList.deleteMemberInfo(res);
+			}			
+		}else if(num==3){
+			System.out.println("group name => ");
+			group=sc.next();
+			gCode = this.groupInfoList.searchGroupName(group).getAbGroupCode();
+			resList=((ABMemberInfoDAOImpl)this.memInfoList).searchMemberGCode(gCode);
+			if(!resList.getAbMemberInfoList().isEmpty()){
+				for(ABMemberInfo mem : resList.getAbMemberInfoList()){
+					System.out.println("name : "+mem.getAbMemberName()+"\n phone number : "+mem.getAbMemberPHNum()+"\n group name : "+this.groupInfoList.searchGroupCode(mem.getAbGroupCode()).getAbGroupName());
+					System.out.println("==============================================================\n delete");
+					this.memInfoList.deleteMemberInfo(mem);
+				}
+			}
+		}
+	}
+	
+	public void process5(){
 		String name,code,note;
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.println("group Name : ");
 		name = sc.next();
-		if(this.groupInfoList.searchGroupName(name)==null){
+		if(this.groupInfoList.searchGroupName(name)!=null){
 			System.out.println("group ("+name+") is already inserted!!!");
 			return;
 		}
 		System.out.println("group note : ");
 		note = sc.next();
-		code=this.memInfoList.makeMemberCode();
+		code=((ABMemberInfoDAOImpl)this.memInfoList).makeMemberCode();
 		if(note==null){
-			this.groupInfoList.insertGroupInfo(code, name);
+			((ABGroupInfoDAOImpl)this.groupInfoList).insertGroupInfo(code, name);
 		}else{
-			this.groupInfoList.insertGroupInfo(code, name, note);
+			((ABGroupInfoDAOImpl)this.groupInfoList).insertGroupInfo(code, name, note);
 		}
 	}
 	
-	public void process4(){
+	public void process6(){
 		//search group
 		int num;
 		String name,note;
-		ABGroupInfoList resList = new ABGroupInfoList();
-		ABMemberInfoList tmpList=new ABMemberInfoList();
+		ABGroupInfoDAO resList = new ABGroupInfoDAOImpl();
+		ABGroupInfo res = null;
+		ABMemberInfoDAOImpl tmpList=new ABMemberInfoDAOImpl();
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.println("search\n1.name\n2.note\n=>");
@@ -137,17 +242,18 @@ public class ABTestMain {
 		if(num==1){
 			System.out.println("member name => ");
 			name=sc.next();
-			resList.insertGroupInfo(this.groupInfoList.searchGroupName(name));
+			res = this.groupInfoList.searchGroupName(name);
+			if(res!=null)resList.insertGroupInfo(res);
 		}else if(num==2){
 			System.out.println("member phone number => ");
 			note=sc.next();
-			resList=this.groupInfoList.searchGroupNoteAll(note);				
+			resList=((ABGroupInfoDAOImpl)this.groupInfoList).searchGroupNoteAll(note);				
 		}
 		if(!resList.getAbGroupInfoList().isEmpty()){
 			for(ABGroupInfo gp : resList.getAbGroupInfoList()){
 				System.out.println("name : "+gp.getAbGroupName()+"\n not : "+gp.getAbGroupNote());
 				System.out.println("group member name : ");
-				tmpList = this.memInfoList.searchMemberGCode(gp.getAbGroupCode());
+				tmpList = ((ABMemberInfoDAOImpl)this.memInfoList).searchMemberGCode(gp.getAbGroupCode());
 				if(!tmpList.getAbMemberInfoList().isEmpty()){
 					for(ABMemberInfo memIn : tmpList.getAbMemberInfoList()){
 						System.out.println("     "+memIn.getAbMemberName()+" , ");
@@ -156,6 +262,57 @@ public class ABTestMain {
 				
 				System.out.println("==============================================================");
 			}
+		}
+	}
+	public void process7(){
+		//search member
+		int num;
+		String name,code,note,group;
+		ABGroupInfoDAOImpl resList = new ABGroupInfoDAOImpl();
+		ABGroupInfo res = null;
+		StringTokenizer token;
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("group name => ");
+		name=sc.next();
+		res=this.groupInfoList.searchGroupName(name);
+		if(res!=null){
+			System.out.println("name : "+res.getAbGroupName()+"\n not : "+res.getAbGroupNote());
+			System.out.println("write member info (name phoneNumber (group)) : ");
+			name=sc.next();
+			if(this.groupInfoList.searchGroupName(name)!=null){
+				System.out.println("group ("+name+") is already inserted!!!");
+				return;
+			}
+			note=sc.next();
+			if(note==null)note = "no note";
+			this.groupInfoList.updateGroupInfo(res, name, note); 
+		}
+	}
+	public void process8(){
+		int num;
+		String name,code,phone,group,gCode;
+		ABGroupInfoDAOImpl resList = new ABGroupInfoDAOImpl();
+		ABGroupInfo res = null;
+		StringTokenizer token;
+		ABMemberInfoDAOImpl tmpList=new ABMemberInfoDAOImpl();
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("group name => ");
+		name=sc.next();
+		res=this.groupInfoList.searchGroupName(name);
+		if(res!=null){
+			System.out.println("name : "+res.getAbGroupName()+"\n not : "+res.getAbGroupNote());
+			System.out.println("write member info (name phoneNumber (group)) : ");
+			name=sc.next();
+			tmpList = ((ABMemberInfoDAOImpl)this.memInfoList).searchMemberGCode(res.getAbGroupCode());
+			if(!tmpList.getAbMemberInfoList().isEmpty()){
+				for(ABMemberInfo memIn : tmpList.getAbMemberInfoList()){
+					System.out.println("     "+memIn.getAbMemberName()+" , ");
+					this.memInfoList.updateMemberInfo(memIn, memIn.getAbMemberName(), memIn.getAbMemberPHNum(), "group_0");
+				}
+			}
+			System.out.println("=============================================================="); 
 		}
 	}
 }

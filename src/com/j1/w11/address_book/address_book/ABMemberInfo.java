@@ -8,7 +8,7 @@ public class ABMemberInfo{
 	private String abGroupCode;
 	
 	public ABMemberInfo(String abMemberCode,String abMemberName, String abMemberPHNum) {
-		this(abMemberCode,abMemberName,abMemberPHNum,"Group_0");
+		this(abMemberCode,abMemberName,abMemberPHNum,"group_0");
 	}
 	public ABMemberInfo(String abMemberCode,String abMemberName, String abMemberPHNum, String abGroupCode) {
 		this.abMemberCode = abMemberCode;

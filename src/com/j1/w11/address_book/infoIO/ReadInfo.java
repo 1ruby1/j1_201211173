@@ -6,18 +6,20 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import address_book.ABGroupInfo;
-import address_book.ABGroupInfoList;
+import address_book.ABGroupInfoDAO;
+import address_book.ABGroupInfoDAOImpl;
 import address_book.ABMemberInfo;
-import address_book.ABMemberInfoList;
+import address_book.ABMemberInfoDAO;
+import address_book.ABMemberInfoDAOImpl;
 
 public class ReadInfo {
 
-	public ABMemberInfoList readMemberInfo(){
-		ABMemberInfoList memList = new ABMemberInfoList();
+	public ABMemberInfoDAO readMemberInfo(){
+		ABMemberInfoDAO memList = new ABMemberInfoDAOImpl();
 		FileReader fr;
 		String code,name,phone,groupCode;
 		try {
-			fr = new FileReader("mem.txt");
+			fr = new FileReader("C://mem.txt");
 			BufferedReader br = new BufferedReader(fr); 
 			while(true){
 				code = br.readLine();
@@ -39,12 +41,12 @@ public class ReadInfo {
 		
 		return memList;
 	}
-	public ABGroupInfoList readGroupInfo(){
-		ABGroupInfoList groupList = new ABGroupInfoList();
+	public ABGroupInfoDAO readGroupInfo(){
+		ABGroupInfoDAOImpl groupList = new ABGroupInfoDAOImpl();
 		FileReader fr;
 		String code,name,note;
 		try {
-			fr = new FileReader("group.txt");
+			fr = new FileReader("C://group.txt");
 			BufferedReader br = new BufferedReader(fr); 
 			while(true){
 				code = br.readLine();
