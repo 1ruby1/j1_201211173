@@ -1,0 +1,13 @@
+class Array
+class ArrayList
+class DinerMenu
+class PancakeHouseMenu
+class MenuItem{
+    -name:String
+    -descriptioin:String
+    +MenuItem(String, String d, boolean v, )
+}
+DinerMenu -> Array:length
+PancakeHouseMenu -> ArrayList:size()
+Client -> DinerMenu:getMenuItems()
+Client -> PancakeHouseMenu:getMenuItems()
