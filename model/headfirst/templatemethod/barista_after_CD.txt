@@ -1,0 +1,34 @@
+class CaffeineBeverage {
+    +final perpareRecipe():void
+    +abstract brew():void
+    +abstract addCondiments():void
+    +boilWater():void
+    +pourInCup():void
+}
+class Coffee {
+    +brew()
+    +addCondiments():void
+}
+class Tea {
+    +brew()
+}
+class CaffeineBeverageWithHook {
+    +perpareRecipe():void
+    +abstract brew():void
+    +abstract addCondiments():void
+    +boilWater():void
+    +pourInCup():void
+    +customerWantsCondiments():boolean
+}
+class CoffeeWithHook {
+    +abstract brew()
+    +addCondiments():void
+    +customerWantsCondiments():boolean
+    -getUserInput():String
+}
+class TeaWithHook {
+    +brew()
+    +addCondiments():void
+    +customerWantsCondiments():boolean
+    -getUserInput():String
+}

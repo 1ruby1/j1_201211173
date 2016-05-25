@@ -1,0 +1,4 @@
+Client -> Tea:new()
+Client -> Coffee:new()
+Client -> Tea:prepareRecipe()
+Client -> Coffee:prepareRecipe()
