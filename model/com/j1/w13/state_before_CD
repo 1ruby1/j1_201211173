@@ -1,0 +1,42 @@
+note left
+	state pattern
+    remove if esle to polymorphism
+    (also statigy - campareTo method)
+    state / transition
+end note
+
+client -> GumballMachine:new(5)
+client -> GumballMachine:insertQuarter()
+alt HAS_QUARTER
+GumballMachine -> GumballMachine :you can not insert a quarter
+
+else NO_QUARTER
+GumballMachine -> GumballMachine :you inserted a quarter
+
+else SOLD_OUT
+GumballMachine -> GumballMachine :you can not insert a quarter, Sold out!
+
+else SOLD
+GumballMachine -> GumballMachine :Wait
+end
+
+client -> GumballMachine:turnCrank()
+alt 
+else
+else 
+else
+end
+
+client -> GumballMachine:ejectAuarter()
+alt 
+else
+else 
+else
+end
+
+client -> GumballMachine:dispense()
+alt 
+else
+else 
+else
+end

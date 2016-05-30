@@ -1,0 +1,16 @@
+interface State{
+    +insertQuarter()
+    +ejectQuarter()
+    +turnCrank()
+    +dispense()
+}
+class GumballMachine{
+    -state:State
+    +setState(state:State)
+    +getState():State
+}
+State <|.. HasQuarter
+State <|.. NoQuarter
+State <|.. SouldOut
+State <|.. Sold
+SouldOut -left-> GumballMachine

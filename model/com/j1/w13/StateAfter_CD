@@ -1,0 +1,10 @@
+interface State{
+    +doAction()
+}
+class Context{
+    -state:State
+    +setState(state:State)
+    +getState():State
+}
+State <|.. ConcreteStateA
+ConcreteStateA -left-> Context
