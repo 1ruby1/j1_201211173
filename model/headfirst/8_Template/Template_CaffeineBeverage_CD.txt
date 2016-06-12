@@ -1,0 +1,17 @@
+abstract class CaffeineBeverage{
+    +{abstract}prepareRecipe()
+    +boilWater()
+    +pourInCup()
+}
+class Coffee{
+    +prepareRecipe()
+    +brewCoffeeGrinds()
+    +addSugarAndMilk()
+}
+class Tea{
+    +prepareRecipe()
+    +stepTeaBag()
+    +addLemon()
+}
+Coffee -up-|> CaffeineBeverage
+Tea -up-|> CaffeineBeverage

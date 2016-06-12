@@ -1,0 +1,8 @@
+Client -> Amplifier:amp=new("My Alplifier")
+Client -> Tuner:tun=new("My Tuner",amp)
+Client -> DvdPlayer:dvd=new("My DvdPlayer",amp)
+Client -> Projector:projector=new("My Projector",dvd)
+
+Client -> HomeTheaterFacade:ht=new(projector)
+Client -> HomeTheaterFacade:ht.watchMovie()
+Client -> HomeTheaterFacade:ht.endMovie()

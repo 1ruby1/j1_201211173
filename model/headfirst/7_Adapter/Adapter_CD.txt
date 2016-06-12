@@ -1,0 +1,13 @@
+class Client
+interface Target{
+    +request()
+}
+class Adapter{
+    +request()
+}
+class Adaptee{
+    +specificRequest()
+}
+
+Adapter ..|> Target
+Adapter --> Adaptee

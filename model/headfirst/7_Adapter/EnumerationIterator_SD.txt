@@ -1,0 +1,5 @@
+Client -> ArrayList:l=new ArrayList(List)
+Client -> EnumerationIterator:new(Collections.enumeration(l))
+Client -> EnumerationIterator:hasNext()
+Client -> EnumerationIterator:next()
+Client -> EnumerationIterator:remove()

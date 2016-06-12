@@ -1,0 +1,5 @@
+class Facade
+Facade --> subSystemClass1
+Facade --> subSystemClass2
+Facade --> subSystemClass3
+Facade --> subSystemClass4

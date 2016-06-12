@@ -1,0 +1,13 @@
+Client -> Coffee:coffee=new()
+Client -> Coffee:coffee.prepareRecipe()
+Coffee -> Coffee:coffee.boilWater()
+Coffee -> Coffee:coffee.brewCoffeeGrinds()
+Coffee -> Coffee:coffee.pourInCup()
+Coffee -> Coffee:coffee.addSugarAndMilk()
+
+Client -> Tea:tea=new()
+Client -> Tea:tea.prepareRecipe()
+Tea -> Tea:tea.boilWater()
+Tea -> Tea:tea.stepTeaBag()
+Tea -> Tea:tea.pourInCup()
+Tea -> Tea:tea.addLemon()

@@ -1,0 +1,16 @@
+interface java.util.Iterator{
+    +hasNext():boolean
+    +next():Object
+    +remove()
+}
+interface java.util.Enumeration{
+    +hasMoreElements():boolean
+    +nextElement():Object
+}
+
+class IteratorEnumeration{
+    +hasMoreElements():boolean
+    +nextElement():Object
+}
+IteratorEnumeration ..|> java.util.Enumeration
+IteratorEnumeration --> java.util.Iterator

@@ -1,0 +1,5 @@
+Client -> java.util.ArrayList:list = new ArrayList();
+Client -> IteratorEnumeration:ie = new IteratorEnumeration(list.listIterator())
+IteratorEnumeration -> java.util.Enumeration:new()
+Client -> IteratorEnumeration:ie.hasMoreElements()
+Client -> IteratorEnumeration:ie.nextElement()

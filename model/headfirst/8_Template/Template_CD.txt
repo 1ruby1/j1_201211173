@@ -1,0 +1,7 @@
+abstract class AbstractClass{
+    +{abstract}algo()
+}
+class ConcreteClass{
+    +algo()
+}
+ConcreteClass -up-|> AbstractClass
