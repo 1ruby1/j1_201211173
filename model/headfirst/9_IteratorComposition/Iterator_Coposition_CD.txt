@@ -1,0 +1,42 @@
+interface java.util.Iterator{
+    +hasNext():boolean
+    +next():Object
+    +remove()
+}
+class PancakeHouseMenuIterator
+class DinnerMenuIterator
+
+PancakeHouseMenuIterator .up.|> java.util.Iterator
+DinnerMenuIterator .up.|> java.util.Iterator
+
+interface Menu{
+    +createIterator():java.util.Iterator
+}
+class PancakeHouseMenu{
+    menuItems:ArrayList
+    +PancakeHouseMenu()
+    +addItem(name:String,des:String,vege:boolean,price:double)
+    +getMenuItems()
+}
+class DinnerMenu{
+    {final}{static}MAX_ITEMS:int;
+    menuItems:MenuItem[]
+    numberOfItems:int
+    +DinnerMenu()
+    +addItem(name:String,des:String,vege:boolean,price:double)
+    +getMenuItems()
+}
+class MenuItem{
+    name:String
+    des:String
+    vege:boolean
+    price:double
+}
+
+PancakeHouseMenu .up.|> Menu
+DinnerMenu .up.|> Menu
+PancakeHouseMenu -up-> MenuItem
+DinnerMenu -up-> MenuItem
+PancakeHouseMenu --> PancakeHouseMenuIterator
+DinnerMenu --> DinnerMenuIterator
+

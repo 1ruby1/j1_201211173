@@ -1,0 +1,14 @@
+Client -> MenuItem:item1=new()
+Client -> MenuItem:item2=new()
+Client -> MenuItem:item3=new()
+Client -> MenuItem:item4=new()
+Client -> DinnerMenu:dinner=new()
+Client -> DinnerMenu:addItem(item1);
+Client -> DinnerMenu:addItem(item2);
+Client -> PancakeHouseMenu:pancake=new()
+Client -> PancakeHouseMenu:addItem(item1);
+Client -> PancakeHouseMenu:addItem(item2);
+Client -> Waitress:waitress=new(dinner,pancake)
+Client -> Waitress:waitress.printItems()
+Waitress ->  PancakeHouseMenu:pancake.crateIterator()
+Waitress ->  DinnerMenu:dinner.crateIterator()
